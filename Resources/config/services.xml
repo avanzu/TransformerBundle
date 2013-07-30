@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    
+    <parameters>
+        <parameter key="avanzu_transformer.annotation.class">Avanzu\TransformerBundle\Annotation\StdObject</parameter>
+        <parameter key="avanzu_transformer.transformer.class">Avanzu\TransformerBundle\Transformer\StdObjectTransformer</parameter>
+        <parameter key="avanzu_transformer.errortransformer.class">Avanzu\TransformerBundle\Transformer\FormErrorsToArrayTransformer</parameter>
+    </parameters>
+
+    <services>
+            <service id="avanzu_transformer.transformer" class="%avanzu_transformer.transformer.class%">
+            <argument type="service" id="annotation_reader" />
+            <argument>%avanzu_transformer.annotation.class%</argument>
+        </service>
+        
+        <service id="avanzu_transformer.errortransformer" class="%avanzu_transformer.errortransformer.class%"> 
+            <argument type="service" id="translator"/>
+        </service>
+    </services>
+    
+</container>
