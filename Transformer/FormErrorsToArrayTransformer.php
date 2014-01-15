@@ -1,6 +1,6 @@
 <?php
 
-namespace Avanzu\TansformerBundle\Transformer;
+namespace Avanzu\TransformerBundle\Transformer;
 
 use Symfony\Component\Form\Form;
 /**
@@ -32,7 +32,7 @@ class FormErrorsToArrayTransformer {
                 : $this->translator->transChoice ($error->getMessageTemplate(), $error->getMessagePluralization(), $error->getMessageParameters(), 'validators');
         }
         
-        foreach($form->getChildren() as $k => $child) {
+        foreach($form as $k => $child) {
                 $this->convert($child, (string)$child->getName());
             }
         

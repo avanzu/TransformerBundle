@@ -22,7 +22,7 @@ class StdObjectTransformer {
         $convertedObject = new \stdClass;
 
         $reflectionObject = new \ReflectionObject($originalObject);
-
+        
         foreach ($reflectionObject->getMethods() as $reflectionMethod) {
             // fetch the @StandardObject annotation from the annotation reader
             $annotation = $this->reader->getMethodAnnotation($reflectionMethod, $this->annotationClass);
